@@ -14,11 +14,6 @@ export interface FoodData {
   foodWaste: number
 }
 
-export interface LifestyleData {
-  shoppingFrequency: number
-  recyclingPercentage: number
-}
-
 export interface CarbonData {
   transportation: TransportationData
   homeEnergy: HomeEnergyData

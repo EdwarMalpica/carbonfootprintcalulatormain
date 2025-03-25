@@ -22,7 +22,6 @@ export default function HomeEnergyForm({ data, onChange, onNext, onBack }: HomeE
   }, [data])
 
   const handleChange = (field: keyof HomeEnergyData, value: number) => {
-    // Ensure value is not negative
     const validValue = Math.max(0, value)
     const newData = { ...formData, [field]: validValue }
     setFormData(newData)
@@ -88,11 +87,14 @@ export default function HomeEnergyForm({ data, onChange, onNext, onBack }: HomeE
         </div>
       </div>
 
-      <div className="flex justify-between">
-        <Button variant="outline" onClick={onBack} className="dark:border-gray-600 dark:text-gray-200">
+      <div className="flex justify-between w-full gap-4">
+        <Button variant="outline" onClick={onBack} className="dark:border-gray-600 dark:text-gray-200 w-full sm:w-auto">
           Back
         </Button>
-        <Button onClick={onNext} className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90">
+        <Button
+          onClick={onNext}
+          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 w-full sm:w-auto"
+        >
           Next
         </Button>
       </div>

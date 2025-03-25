@@ -21,7 +21,6 @@ export default function TransportationForm({ data, onChange, onNext }: Transport
   }, [data])
 
   const handleChange = (field: keyof TransportationData, value: number) => {
-    // Ensure value is not negative
     const validValue = Math.max(0, value)
     const newData = { ...formData, [field]: validValue }
     setFormData(newData)
@@ -112,8 +111,11 @@ export default function TransportationForm({ data, onChange, onNext }: Transport
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <Button onClick={onNext} className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90">
+      <div className="flex justify-end w-full">
+        <Button
+          onClick={onNext}
+          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 w-full sm:w-auto"
+        >
           Next
         </Button>
       </div>

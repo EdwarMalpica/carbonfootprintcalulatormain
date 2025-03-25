@@ -18,7 +18,6 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  // Ensure component is mounted to access theme
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -29,13 +28,10 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
     const ctx = canvasRef.current.getContext("2d")
     if (!ctx) return
 
-    // Check if dark mode is active
     const isDarkMode = theme === "dark"
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
 
-    // Draw pie chart
     const centerX = canvasRef.current.width / 2
     const centerY = canvasRef.current.height / 2
     const radius = Math.min(centerX, centerY) - 10
@@ -60,12 +56,10 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
       ctx.fillStyle = item.color
       ctx.fill()
 
-      // Draw label
       const labelAngle = startAngle + sliceAngle / 2
       const labelX = centerX + radius * 0.7 * Math.cos(labelAngle)
       const labelY = centerY + radius * 0.7 * Math.sin(labelAngle)
 
-      // Use white text for dark mode, black for light mode
       ctx.fillStyle = isDarkMode ? "#ffffff" : "#000000"
       ctx.font = "bold 12px Arial"
       ctx.textAlign = "center"
@@ -127,7 +121,7 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
                 <Progress
                   value={(results.transportation / results.total) * 100}
                   className="h-2 bg-gray-200 dark:bg-gray-700"
-                  indicatorClassName="bg-emerald-400"
+                  style={{ backgroundColor: "#34d399" }}
                 />
               </div>
 
@@ -139,7 +133,7 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
                 <Progress
                   value={(results.homeEnergy / results.total) * 100}
                   className="h-2 bg-gray-200 dark:bg-gray-700"
-                  indicatorClassName="bg-blue-400"
+                  style={{ backgroundColor: "#3b82f6" }}
                 />
               </div>
 
@@ -151,7 +145,7 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
                 <Progress
                   value={(results.food / results.total) * 100}
                   className="h-2 bg-gray-200 dark:bg-gray-700"
-                  indicatorClassName="bg-orange-400"
+                  style={{ backgroundColor: "#f97316" }}
                 />
               </div>
             </div>
@@ -178,10 +172,10 @@ export default function ResultsVisualization({ results, onReset }: ResultsVisual
         </Card>
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center w-full">
         <Button
           onClick={onReset}
-          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 flex items-center gap-2"
+          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 flex items-center gap-2 w-full sm:w-auto max-w-xs"
         >
           <RefreshCw className="h-4 w-4" />
           Start Over

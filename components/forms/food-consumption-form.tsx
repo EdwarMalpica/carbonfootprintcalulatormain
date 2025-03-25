@@ -22,7 +22,6 @@ export default function FoodConsumptionForm({ data, onChange, onCalculate, onBac
   }, [data])
 
   const handleChange = (field: keyof FoodData, value: number) => {
-    // Ensure value is not negative
     const validValue = Math.max(0, value)
     const newData = { ...formData, [field]: validValue }
     setFormData(newData)
@@ -88,13 +87,13 @@ export default function FoodConsumptionForm({ data, onChange, onCalculate, onBac
         </div>
       </div>
 
-      <div className="flex justify-between">
-        <Button variant="outline" onClick={onBack} className="dark:border-gray-600 dark:text-gray-200">
+      <div className="flex justify-between w-full gap-4">
+        <Button variant="outline" onClick={onBack} className="dark:border-gray-600 dark:text-gray-200 w-full sm:w-auto">
           Back
         </Button>
         <Button
           onClick={onCalculate}
-          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90"
+          className="bg-primary hover:bg-primary/90 dark:bg-primary dark:hover:bg-primary/90 w-full sm:w-auto"
         >
           Calculate Footprint
         </Button>
